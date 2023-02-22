@@ -3,6 +3,10 @@ module.exports = {
   content: ["./src/**/*.{tsx,jsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-roboto)"],
+        poppins: "var(--font-poppins)",
+      },
       colors: {
         food: {
           light: {
