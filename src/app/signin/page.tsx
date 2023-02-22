@@ -1,3 +1,4 @@
+import { Button } from "@/components/Button";
 import Image from "next/image";
 import Link from "next/link";
 import logoSVG from "../../../public/logo.svg";
@@ -32,9 +33,7 @@ export default function SignIn() {
             />
           </fieldset>
           <fieldset className="flex flex-col gap-2">
-            <button className="px-8 py-3 bg-food-tints-tomato-100 hover:bg-food-tints-tomato-200 disabled:bg-food-tints-tomato-400 transition-colors rounded-md text-food-light-100 font-poppins font-medium text-sm">
-              Go
-            </button>
+            <Button>Go</Button>
           </fieldset>
           <Link
             href="/signup"
