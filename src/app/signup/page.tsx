@@ -1,4 +1,5 @@
 import { Button } from "@/components/Button";
+import { Input } from "@/components/Input";
 import Image from "next/image";
 import Link from "next/link";
 import logoSVG from "../../../public/logo.svg";
@@ -16,7 +17,7 @@ export default function SignUp() {
             <label className="font-normal text-base leading-[100%] text-food-light-400">
               Your name
             </label>
-            <input
+            <Input
               type="text"
               placeholder="Example: John Doe"
               className="bg-food-dark-900 rounded-lg h-12 px-4 py-3 placeholder:text-food-light-500 outline-none text-food-light-100"
@@ -26,7 +27,7 @@ export default function SignUp() {
             <label className="font-normal text-base leading-[100%] text-food-light-400">
               Email
             </label>
-            <input
+            <Input
               type="text"
               placeholder="Example: johndoe@johndoe.com"
               className="bg-food-dark-900 rounded-lg h-12 px-4 py-3 placeholder:text-food-light-500 outline-none text-food-light-100"
@@ -36,7 +37,7 @@ export default function SignUp() {
             <label className="font-normal text-base leading-[100%] text-food-light-400">
               Password
             </label>
-            <input
+            <Input
               type="password"
               placeholder="Min 6 characters"
               className="bg-food-dark-900 rounded-lg h-12 px-4 py-3 placeholder:text-food-light-500 outline-none text-food-light-100"
