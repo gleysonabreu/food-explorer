@@ -9,6 +9,14 @@ module.exports = {
       },
       colors: {
         food: {
+          tints: {
+            tomato: {
+              100: "#750310",
+              200: "#92000E",
+              300: "#AB222E",
+              400: "#AB4D55",
+            }
+          },
           light: {
             100: "#FFFFFF",
             200: "#FFFAF1",
