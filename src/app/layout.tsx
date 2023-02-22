@@ -9,7 +9,7 @@ const poppins = Poppins({
 const roboto = Roboto({
   subsets: ["latin"],
   variable: "--font-roboto",
-  weight: ["400"],
+  weight: ["100", "300", "400", "500", "700", "900"],
 });
 
 export default function RootLayout({

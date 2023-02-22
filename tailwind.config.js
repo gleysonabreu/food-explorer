@@ -4,8 +4,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-roboto)"],
         poppins: "var(--font-poppins)",
+        roboto: "var(--font-roboto)",
       },
       colors: {
         food: {
