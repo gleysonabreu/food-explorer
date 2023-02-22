@@ -36,7 +36,7 @@ export default function SignUp() {
               Password
             </label>
             <input
-              type="text"
+              type="password"
               placeholder="Min 6 characters"
               className="bg-food-dark-900 rounded-lg h-12 px-4 py-3 placeholder:text-food-light-500 outline-none text-food-light-100"
             />
