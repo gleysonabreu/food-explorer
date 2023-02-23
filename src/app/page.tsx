@@ -16,6 +16,7 @@ export default function Home() {
         "Rabanetes, folhas verdes e molho agridoce salpicados com gergelim",
       price: 50.0,
       amount: 10,
+      urlFood: "salad-ravanello",
     },
     {
       id: "cuid1",
@@ -25,6 +26,7 @@ export default function Home() {
         "Rabanetes, folhas verdes e molho agridoce salpicados com gergelim",
       price: 50.0,
       amount: 10,
+      urlFood: "salad-ravanello",
     },
     {
       id: "cuid2",
@@ -34,6 +36,7 @@ export default function Home() {
         "Rabanetes, folhas verdes e molho agridoce salpicados com gergelim",
       price: 50.0,
       amount: 10,
+      urlFood: "salad-ravanello",
     },
     {
       id: "cuid4",
@@ -43,6 +46,7 @@ export default function Home() {
         "Rabanetes, folhas verdes e molho agridoce salpicados com gergelim",
       price: 50.0,
       amount: 10,
+      urlFood: "salad-ravanello",
     },
   ];
 

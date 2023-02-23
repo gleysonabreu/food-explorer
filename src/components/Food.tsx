@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState } from "react";
 import { Button } from "./Button";
 import { FoodImage } from "./FoodImage";
@@ -11,6 +12,7 @@ export type FoodProps = {
   foodDescription: string;
   price: number;
   amount: number;
+  urlFood: string;
 };
 
 export function Food({
@@ -20,6 +22,7 @@ export function Food({
   foodImage,
   foodName,
   price,
+  urlFood,
 }: FoodProps) {
   const [quantity, setQuantity] = useState(0);
 
@@ -40,9 +43,12 @@ export function Food({
       </button>
       <FoodImage foodName={foodName} url={foodImage} variant="sm" />
 
-      <h1 className="font-poppins font-bold text-2xl text-center text-food-light-300">
+      <Link
+        href={`/foods/${urlFood}`}
+        className="font-poppins font-bold text-2xl text-center text-food-light-300 hover:text-food-tints-cake-200 transition-colors"
+      >
         {foodName}
-      </h1>
+      </Link>
       <p className="text-base text-food-light-400 text-center">
         {foodDescription}
       </p>
