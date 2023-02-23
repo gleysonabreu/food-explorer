@@ -1,18 +1,14 @@
 "use client";
 import { Button } from "@/components/Button";
+import { Header } from "@/components/Header";
 import { CaretRight } from "@/components/Icons/CaretRight";
 import { Minus } from "@/components/Icons/Minus";
 import { Plus } from "@/components/Icons/Plus";
-import { Receipt } from "@/components/Icons/Receipt";
-import { Search } from "@/components/Icons/Search";
-import { SignOut } from "@/components/Icons/SignOut";
-import { Input } from "@/components/Input";
 import Image from "next/image";
 import Slider, { Settings } from "react-slick";
 import foodPNG from "../../public/food-banner.png";
 import food1 from "../../public/food1.png";
 import logoGraySVG from "../../public/logo-gray.svg";
-import logoSVG from "../../public/logo.svg";
 
 function Food() {
   return (
@@ -91,26 +87,7 @@ export default function Home() {
   };
   return (
     <main className="flex flex-col min-h-screen w-full">
-      <header className="w-full flex flex-row items-center py-6 px-28 gap-8 bg-food-dark-600 h-28">
-        <Image
-          src={logoSVG.src}
-          alt="Food Explorer Logo"
-          width={197}
-          height={30}
-        />
-
-        <div className="w-6/12 bg-food-dark-900 rounded-lg pl-24 flex flex-row items-center">
-          <Search />
-          <Input placeholder="Search for food or ingredients" />
-        </div>
-        <Button>
-          <Receipt />
-          <span>Orders (0)</span>
-        </Button>
-        <button>
-          <SignOut />
-        </button>
-      </header>
+      <Header />
       <div className="px-32 mt-44 flex flex-col gap-16">
         <div className="w-full relative bg-gradient-food-200 h-64 rounded-lg text-food-light-300 flex items-center justify-center gap-3">
           <Image
