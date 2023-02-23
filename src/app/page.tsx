@@ -1,58 +1,12 @@
 "use client";
-import { Button } from "@/components/Button";
+import { Food } from "@/components/Food";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { CaretRight } from "@/components/Icons/CaretRight";
-import { Minus } from "@/components/Icons/Minus";
-import { Plus } from "@/components/Icons/Plus";
 import Image from "next/image";
 import Slider, { Settings } from "react-slick";
 import foodPNG from "../../public/food-banner.png";
 import food1 from "../../public/food1.png";
-
-function Food() {
-  return (
-    <div className="flex flex-col items-center p-6 gap-4 isolate w-[305px] h-[462px] bg-food-dark-300 border border-food-dark-300 rounded-lg">
-      <div className="h-44 w-44">
-        <Image
-          src={food1.src}
-          alt="Food 1"
-          width={176}
-          height={176}
-          className="w-44 h-44 rounded-full"
-        />
-      </div>
-
-      <h1 className="font-poppins font-bold text-2xl text-center text-food-light-300">
-        Salada Ravanello
-      </h1>
-      <p className="text-base text-food-light-400 text-center">
-        Rabanetes, folhas verdes e molho agridoce salpicados com gergelim
-      </p>
-      <h2 className="font-normal text-3xl text-center text-food-tints-cake-200">
-        R$ 49,97
-      </h2>
-
-      <div className="flex items-center gap-4">
-        <button>
-          <Minus />
-        </button>
-        <input
-          className="bg-transparent w-5 outline-none text-center text-food-light-300 font-bold text-xl"
-          type="text"
-          id="food-amount"
-          readOnly
-          value={2}
-        />
-        <button>
-          <Plus />
-        </button>
-
-        <Button>Add</Button>
-      </div>
-    </div>
-  );
-}
 
 function SampleNextArrow(props: any) {
   const { onClick } = props;
@@ -77,14 +31,54 @@ function SamplePrevArrow(props: any) {
 }
 
 export default function Home() {
+  const foods = [
+    {
+      id: "cuid",
+      foodImage: food1.src,
+      foodName: "Salad Ravanello",
+      foodDescription:
+        "Rabanetes, folhas verdes e molho agridoce salpicados com gergelim",
+      price: 50.0,
+      amount: 10,
+    },
+    {
+      id: "cuid1",
+      foodImage: food1.src,
+      foodName: "Salad Ravanello",
+      foodDescription:
+        "Rabanetes, folhas verdes e molho agridoce salpicados com gergelim",
+      price: 50.0,
+      amount: 10,
+    },
+    {
+      id: "cuid2",
+      foodImage: food1.src,
+      foodName: "Salad Ravanello",
+      foodDescription:
+        "Rabanetes, folhas verdes e molho agridoce salpicados com gergelim",
+      price: 50.0,
+      amount: 10,
+    },
+    {
+      id: "cuid4",
+      foodImage: food1.src,
+      foodName: "Salad Ravanello",
+      foodDescription:
+        "Rabanetes, folhas verdes e molho agridoce salpicados com gergelim",
+      price: 50.0,
+      amount: 10,
+    },
+  ];
+
   const settings: Settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 1,
+    slidesToShow: foods.length > 0 && foods.length >= 3 ? 3 : 1,
     slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
+
   return (
     <main className="flex flex-col min-h-screen w-full">
       <Header />
@@ -114,7 +108,9 @@ export default function Home() {
 
           <div className="w-full relative">
             <Slider {...settings}>
-              <Food />
+              {foods.map((food) => (
+                <Food key={food.id} {...food} />
+              ))}
             </Slider>
           </div>
         </section>
@@ -126,7 +122,9 @@ export default function Home() {
 
           <div className="w-full relative">
             <Slider {...settings}>
-              <Food />
+              {foods.map((food) => (
+                <Food key={food.id} {...food} />
+              ))}
             </Slider>
           </div>
         </section>
@@ -138,7 +136,9 @@ export default function Home() {
 
           <div className="w-full relative">
             <Slider {...settings}>
-              <Food />
+              {foods.map((food) => (
+                <Food key={food.id} {...food} />
+              ))}
             </Slider>
           </div>
         </section>
