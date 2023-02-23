@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <main className="flex flex-col min-h-screen w-full">
       <Header />
-      <div className="px-32 py-6 flex flex-1 flex-col gap-6">
+      <div className="px-32 py-3 flex flex-1 flex-col gap-6 justify-center">
         <header>
           <button onClick={() => back()} className="flex items-center gap-3">
             <CaretLeft />

@@ -49,14 +49,14 @@ export default function Home() {
   return (
     <main className="flex flex-col min-h-screen w-full">
       <Header />
-      <div className="px-32 mt-44 flex flex-col gap-16">
-        <div className="w-full relative bg-gradient-food-200 h-64 rounded-lg text-food-light-300 flex items-center justify-center gap-3">
+      <div className="px-32 mt-44 flex flex-col gap-16 justify-center">
+        <div className="w-full relative bg-gradient-food-200 h-64 rounded-lg text-food-light-300 flex items-center justify-center">
           <Image
             src={foodPNG.src}
             alt="Foods"
-            width={656}
+            width={550}
             height={412}
-            className="-mt-32 -ml-44"
+            className="-mt-16"
           />
           <div className="flex flex-col gap-2">
             <h1 className="text-4xl leading-[140%] font-normal font-poppins">

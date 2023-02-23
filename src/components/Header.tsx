@@ -9,7 +9,7 @@ import logoSVG from "../../public/logo.svg";
 
 export function Header() {
   return (
-    <header className="w-full flex flex-row items-center py-6 px-28 gap-8 bg-food-dark-600 h-28">
+    <header className="w-full flex justify-center flex-row items-center py-6 px-28 gap-8 bg-food-dark-600 h-28">
       <Image
         src={logoSVG.src}
         alt="Food Explorer Logo"
