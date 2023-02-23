@@ -1,34 +1,10 @@
 "use client";
-import { Food } from "@/components/Food";
+import { Box } from "@/components/Box";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { CaretRight } from "@/components/Icons/CaretRight";
 import Image from "next/image";
-import Slider, { Settings } from "react-slick";
 import foodPNG from "../../public/food-banner.png";
 import food1 from "../../public/food1.png";
-
-function SampleNextArrow(props: any) {
-  const { onClick } = props;
-  return (
-    <div className="w-56 z-50 h-full top-0 right-0 absolute flex items-center justify-end bg-gradient-food-caret-right">
-      <button onClick={onClick}>
-        <CaretRight />
-      </button>
-    </div>
-  );
-}
-
-function SamplePrevArrow(props: any) {
-  const { onClick } = props;
-  return (
-    <div className="matrix-caret-left w-56 transform-[matrix(-1, 0, 0, 1, 0, 0)] z-50 h-full top-0 left-0 absolute flex items-center justify-end bg-gradient-food-caret-right">
-      <button onClick={onClick}>
-        <CaretRight />
-      </button>
-    </div>
-  );
-}
 
 export default function Home() {
   const foods = [
@@ -70,15 +46,6 @@ export default function Home() {
     },
   ];
 
-  const settings: Settings = {
-    dots: false,
-    infinite: true,
-    slidesToShow: foods.length > 0 && foods.length >= 3 ? 3 : 1,
-    slidesToScroll: 1,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
-  };
-
   return (
     <main className="flex flex-col min-h-screen w-full">
       <Header />
@@ -101,47 +68,9 @@ export default function Home() {
           </div>
         </div>
 
-        <section className="w-full flex flex-col gap-6">
-          <h1 className="text-food-light-300 text-3xl font-poppins font-normal">
-            Meals
-          </h1>
-
-          <div className="w-full relative">
-            <Slider {...settings}>
-              {foods.map((food) => (
-                <Food key={food.id} {...food} />
-              ))}
-            </Slider>
-          </div>
-        </section>
-
-        <section className="w-full flex flex-col gap-6">
-          <h1 className="text-food-light-300 text-3xl font-poppins font-normal">
-            Desserts
-          </h1>
-
-          <div className="w-full relative">
-            <Slider {...settings}>
-              {foods.map((food) => (
-                <Food key={food.id} {...food} />
-              ))}
-            </Slider>
-          </div>
-        </section>
-
-        <section className="w-full flex flex-col gap-6">
-          <h1 className="text-food-light-300 text-3xl font-poppins font-normal">
-            Drinks
-          </h1>
-
-          <div className="w-full relative">
-            <Slider {...settings}>
-              {foods.map((food) => (
-                <Food key={food.id} {...food} />
-              ))}
-            </Slider>
-          </div>
-        </section>
+        <Box title="Meals" foods={foods} />
+        <Box title="Desserts" foods={foods} />
+        <Box title="Drinks" foods={foods} />
       </div>
       <Footer />
     </main>

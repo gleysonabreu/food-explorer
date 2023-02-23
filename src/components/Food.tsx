@@ -4,7 +4,7 @@ import { Plus } from "@/components/Icons/Plus";
 import { useState } from "react";
 import { FoodImage } from "./FoodImage";
 
-type FoodProps = {
+export type FoodProps = {
   id: string;
   foodImage: string;
   foodName: string;
