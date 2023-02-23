@@ -1,9 +1,8 @@
-import { Button } from "@/components/Button";
-import { Minus } from "@/components/Icons/Minus";
-import { Plus } from "@/components/Icons/Plus";
 import { useState } from "react";
+import { Button } from "./Button";
 import { FoodImage } from "./FoodImage";
 import { Heart } from "./Icons/Heart";
+import { Stepper } from "./Stepper";
 
 export type FoodProps = {
   id: string;
@@ -52,26 +51,11 @@ export function Food({
       </h2>
 
       <div className="flex items-center gap-4">
-        <button
-          onClick={handleRemoveQuantity}
-          className="w-6 h-6 items-center justify-center"
-        >
-          <Minus />
-        </button>
-        <input
-          className="bg-transparent w-10 outline-none text-center text-food-light-300 font-bold text-xl"
-          type="number"
-          id="food-amount"
-          readOnly
-          value={quantity}
+        <Stepper
+          quantity={quantity}
+          handleAddQuantity={handleAddQuantity}
+          handleRemoveQuantity={handleRemoveQuantity}
         />
-        <button
-          onClick={handleAddQuantity}
-          className="w-6 h-6 flex items-center justify-center"
-        >
-          <Plus />
-        </button>
-
         <Button>Add</Button>
       </div>
     </div>
