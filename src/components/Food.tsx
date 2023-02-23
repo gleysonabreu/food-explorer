@@ -1,8 +1,8 @@
 import { Button } from "@/components/Button";
 import { Minus } from "@/components/Icons/Minus";
 import { Plus } from "@/components/Icons/Plus";
-import Image from "next/image";
 import { useState } from "react";
+import { FoodImage } from "./FoodImage";
 
 type FoodProps = {
   id: string;
@@ -35,15 +35,7 @@ export function Food({
 
   return (
     <div className="flex flex-col items-center p-6 gap-4 isolate w-[305px] h-[462px] bg-food-dark-300 border border-food-dark-300 rounded-lg">
-      <div className="h-44 w-44">
-        <Image
-          src={foodImage}
-          alt={foodName}
-          width={176}
-          height={176}
-          className="w-44 h-44 rounded-full"
-        />
-      </div>
+      <FoodImage foodName={foodName} url={foodImage} variant="sm" />
 
       <h1 className="font-poppins font-bold text-2xl text-center text-food-light-300">
         {foodName}
