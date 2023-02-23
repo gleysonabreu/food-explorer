@@ -1,7 +1,5 @@
-import Slider, { Settings } from "react-slick";
 import { Food, FoodProps } from "./Food";
-import { NextArrowSlider } from "./NextArrowSlider";
-import { PrevArrowSlider } from "./PrevArrowSlider";
+import { SliderBox } from "./SliderBox";
 
 type BoxProps = {
   title: string;
@@ -9,14 +7,7 @@ type BoxProps = {
 };
 
 export function Box({ title, foods }: BoxProps) {
-  const settings: Settings = {
-    dots: false,
-    infinite: true,
-    slidesToShow: foods.length > 0 && foods.length >= 3 ? 3 : 1,
-    slidesToScroll: 1,
-    nextArrow: <NextArrowSlider />,
-    prevArrow: <PrevArrowSlider />,
-  };
+  const slidesToShow = foods.length;
 
   return (
     <section className="w-full flex flex-col gap-6">
@@ -25,11 +16,11 @@ export function Box({ title, foods }: BoxProps) {
       </h1>
 
       <div className="w-full relative">
-        <Slider {...settings}>
+        <SliderBox slidesToShow={slidesToShow}>
           {foods.map((food) => (
             <Food key={food.id} {...food} />
           ))}
-        </Slider>
+        </SliderBox>
       </div>
     </section>
   );
