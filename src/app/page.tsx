@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/components/Button";
+import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { CaretRight } from "@/components/Icons/CaretRight";
 import { Minus } from "@/components/Icons/Minus";
@@ -8,7 +9,6 @@ import Image from "next/image";
 import Slider, { Settings } from "react-slick";
 import foodPNG from "../../public/food-banner.png";
 import food1 from "../../public/food1.png";
-import logoGraySVG from "../../public/logo-gray.svg";
 
 function Food() {
   return (
@@ -143,17 +143,7 @@ export default function Home() {
           </div>
         </section>
       </div>
-      <footer className="w-full h-20 bg-food-dark-600 flex flex-row justify-between items-center px-32 py-6">
-        <Image
-          src={logoGraySVG.src}
-          alt="Food Explorer"
-          width={186}
-          height={30}
-        />
-        <span className="text-food-light-300 text-base">
-          © 2023 - All rights reserved.
-        </span>
-      </footer>
+      <Footer />
     </main>
   );
 }
