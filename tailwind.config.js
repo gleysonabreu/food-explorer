@@ -7,6 +7,10 @@ module.exports = {
         poppins: "var(--font-poppins)",
         roboto: "var(--font-roboto)",
       },
+      backgroundImage: {
+        "gradient-food-200": "linear-gradient(180deg, #091E26 0%, #00131C 100%)",
+        "gradient-food-caret-right": "linear-gradient(90deg, rgba(0, 10, 15, 0.272541) 0%, #000A0F 100%)",
+      },
       colors: {
         food: {
           tints: {
@@ -15,6 +19,10 @@ module.exports = {
               200: "#92000E",
               300: "#AB222E",
               400: "#AB4D55",
+            },
+            cake: {
+              100: "##065E7C",
+              200: "#82F3FF",
             }
           },
           light: {

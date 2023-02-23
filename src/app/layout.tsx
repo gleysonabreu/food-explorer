@@ -1,4 +1,6 @@
 import { Poppins, Roboto } from "@next/font/google";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 import "../styles/main.css";
 
 const poppins = Poppins({
