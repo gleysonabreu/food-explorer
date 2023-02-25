@@ -1,53 +1,10 @@
-"use client";
-import { Box } from "@/components/Box";
+import { ContextBoxes } from "@/components/ContentBoxes";
+import { Loading } from "@/components/Loading";
 import Image from "next/image";
+import { Suspense } from "react";
 import foodPNG from "../../../public/food-banner.png";
-import food1 from "../../../public/food1.png";
 
 export default function Home() {
-  const foods = [
-    {
-      id: "cuid",
-      foodImage: food1.src,
-      foodName: "Salad Ravanello",
-      foodDescription:
-        "Rabanetes, folhas verdes e molho agridoce salpicados com gergelim",
-      price: 50.0,
-      amount: 10,
-      urlFood: "salad-ravanello",
-    },
-    {
-      id: "cuid1",
-      foodImage: food1.src,
-      foodName: "Salad Ravanello",
-      foodDescription:
-        "Rabanetes, folhas verdes e molho agridoce salpicados com gergelim",
-      price: 50.0,
-      amount: 10,
-      urlFood: "salad-ravanello",
-    },
-    {
-      id: "cuid2",
-      foodImage: food1.src,
-      foodName: "Salad Ravanello",
-      foodDescription:
-        "Rabanetes, folhas verdes e molho agridoce salpicados com gergelim",
-      price: 50.0,
-      amount: 10,
-      urlFood: "salad-ravanello",
-    },
-    {
-      id: "cuid4",
-      foodImage: food1.src,
-      foodName: "Salad Ravanello",
-      foodDescription:
-        "Rabanetes, folhas verdes e molho agridoce salpicados com gergelim",
-      price: 50.0,
-      amount: 10,
-      urlFood: "salad-ravanello",
-    },
-  ];
-
   return (
     <div className="px-32 mt-44 flex flex-col gap-16 justify-center">
       <div className="w-full relative bg-gradient-food-200 h-64 rounded-lg text-food-light-300 flex items-center justify-center">
@@ -68,9 +25,10 @@ export default function Home() {
         </div>
       </div>
 
-      <Box title="Meals" foods={foods} />
-      <Box title="Desserts" foods={foods} />
-      <Box title="Drinks" foods={foods} />
+      <Suspense fallback={<Loading />}>
+        {/* @ts-expect-error Async Await Components */}
+        <ContextBoxes />
+      </Suspense>
     </div>
   );
 }

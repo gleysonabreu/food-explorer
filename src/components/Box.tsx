@@ -1,3 +1,4 @@
+"use client";
 import { Food, FoodProps } from "./Food";
 import { SliderBox } from "./SliderBox";
 

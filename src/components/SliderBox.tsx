@@ -10,7 +10,6 @@ type SliderBoxProps = {
 
 export function SliderBox({ children, slidesToShow }: SliderBoxProps) {
   const LIMIT_SLIDES = 3;
-  const DEFAULT_SLIDES = 1;
 
   const settings: Settings = {
     dots: false,
@@ -18,7 +17,7 @@ export function SliderBox({ children, slidesToShow }: SliderBoxProps) {
     slidesToShow:
       slidesToShow > 0 && slidesToShow >= LIMIT_SLIDES
         ? LIMIT_SLIDES
-        : DEFAULT_SLIDES,
+        : slidesToShow,
     slidesToScroll: 1,
     nextArrow: <NextArrowSlider />,
     prevArrow: <PrevArrowSlider />,
