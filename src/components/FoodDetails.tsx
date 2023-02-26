@@ -11,16 +11,19 @@ type FoodDetailsProps = {
 };
 
 export function FoodDetails({ food }: FoodDetailsProps) {
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(food.price);
 
   function handleAddQuantity() {
     if (quantity >= food.amount) return;
-    setQuantity((oldState) => oldState + 1);
+    setQuantity(quantity + 1);
+    setTotalPrice(food.price * (quantity + 1));
   }
 
   function handleRemoveQuantity() {
-    if (quantity <= 0) return;
-    setQuantity((oldState) => oldState - 1);
+    if (quantity <= 1) return;
+    setQuantity(quantity - 1);
+    setTotalPrice(food.price * (quantity - 1));
   }
 
   return (
@@ -46,7 +49,9 @@ export function FoodDetails({ food }: FoodDetailsProps) {
             handleAddQuantity={handleAddQuantity}
             handleRemoveQuantity={handleRemoveQuantity}
           />
-          <Button>Add (R$ {food.price})</Button>
+          <Button>
+            Add (R$ {totalPrice.toFixed(2).toString().replace(".", ",")})
+          </Button>
         </div>
       </div>
     </div>

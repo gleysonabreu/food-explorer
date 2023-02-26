@@ -25,16 +25,19 @@ export function Food({
   price,
   urlFood,
 }: FoodProps) {
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(price);
 
   function handleAddQuantity() {
     if (quantity >= amount) return;
-    setQuantity((oldState) => oldState + 1);
+    setQuantity(quantity + 1);
+    setTotalPrice(price * (quantity + 1));
   }
 
   function handleRemoveQuantity() {
-    if (quantity <= 0) return;
-    setQuantity((oldState) => oldState - 1);
+    if (quantity <= 1) return;
+    setQuantity(quantity - 1);
+    setTotalPrice(price * (quantity - 1));
   }
 
   return (
@@ -54,7 +57,7 @@ export function Food({
         {foodDescription}
       </p>
       <h2 className="font-normal text-3xl text-center text-food-tints-cake-200">
-        R$ {price}
+        R$ {totalPrice.toFixed(2).toString().replace(".", ",")}
       </h2>
 
       <div className="flex items-center gap-4">
