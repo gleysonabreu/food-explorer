@@ -1,11 +1,11 @@
 "use client";
 import { Button } from "@/components/Button";
 import { Receipt } from "@/components/Icons/Receipt";
-import { Search } from "@/components/Icons/Search";
 import { SignOut } from "@/components/Icons/SignOut";
 import { Input } from "@/components/Input";
 import Image from "next/image";
 import logoSVG from "../../public/logo.svg";
+import { CartDialog } from "./CartDialog";
 
 export function Header() {
   return (
@@ -17,14 +17,17 @@ export function Header() {
         height={30}
       />
 
-      <div className="w-6/12 bg-food-dark-900 rounded-lg pl-24 flex flex-row items-center">
-        <Search />
+      <div className="w-4/12">
         <Input placeholder="Search for food or ingredients" />
       </div>
+
       <Button>
         <Receipt />
         <span>Orders (0)</span>
       </Button>
+
+      <CartDialog />
+
       <button>
         <SignOut />
       </button>
