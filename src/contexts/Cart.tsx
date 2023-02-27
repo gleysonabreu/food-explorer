@@ -5,13 +5,23 @@ import { toast } from "react-toastify";
 
 type CartContextValue = {
   amountItemCount: number;
-  addToCart: (food: CartItem) => void;
+  addToCart: (food: AddToCartProps) => void;
   cartItems: CartItem[];
 };
 
-type CartItem = {
+type AddToCartProps = {
   foodId: string;
   quantity: number;
+};
+
+type CartItem = {
+  id: string;
+  foodName: string;
+  foodDescription: string;
+  price: number;
+  foodImage: string;
+  amount: number;
+  urlFood: string;
 };
 
 export const CartContext = createContext<CartContextValue | null>(null);
@@ -25,22 +35,17 @@ export function CartProvider({ children }: CartProviderProps) {
 
     return cart ? JSON.parse(cart) : [];
   });
-  const amountItemCount = cartItems.reduce(
-    (acc, item) => acc + item.quantity,
-    0
-  );
+  const amountItemCount = cartItems.reduce((acc, item) => acc + item.amount, 0);
 
-  async function addToCart({ foodId, quantity }: CartItem) {
+  async function addToCart({ foodId, quantity }: AddToCartProps) {
     try {
-      const res = await fetch(`${env.apiURL}/stock/${foodId}`);
-      const resBody = await res.json();
+      const res = await fetch(`${env.apiURL}/foods/${foodId}`);
+      const resBody = (await res.json()) as CartItem;
 
       if (res.status === 200) {
-        const existingCartItem = cartItems.find(
-          (cart) => cart.foodId === foodId
-        );
+        const existingCartItem = cartItems.find((cart) => cart.id === foodId);
         const newQuantity = existingCartItem
-          ? existingCartItem.quantity + quantity
+          ? existingCartItem.amount + quantity
           : quantity;
 
         if (newQuantity > resBody.amount) {
@@ -50,9 +55,9 @@ export function CartProvider({ children }: CartProviderProps) {
 
         const newCartList = existingCartItem
           ? cartItems.map((cart) =>
-              cart.foodId === foodId ? { ...cart, quantity: newQuantity } : cart
+              cart.id === foodId ? { ...cart, amount: newQuantity } : cart
             )
-          : [...cartItems, { foodId, quantity: newQuantity }];
+          : [...cartItems, { ...resBody, amount: newQuantity }];
 
         setCartItems(newCartList);
         localStorage.setItem(env.cartKey, JSON.stringify(newCartList));
