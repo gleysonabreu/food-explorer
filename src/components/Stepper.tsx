@@ -16,7 +16,7 @@ export function Stepper({
     <div className="flex items-center gap-4">
       <button
         onClick={handleRemoveQuantity}
-        className="w-6 h-6 items-center justify-center"
+        className="w-6 h-6 flex items-center justify-center"
       >
         <Minus />
       </button>
