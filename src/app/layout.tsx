@@ -1,4 +1,8 @@
+"use client";
+import { CartProvider } from "@/contexts/Cart";
 import { Poppins, Roboto } from "@next/font/google";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
 import "../styles/main.css";
@@ -25,7 +29,10 @@ export default function RootLayout({
       <body
         className={`${roboto.variable} ${poppins.variable} bg-food-dark-400`}
       >
-        {children}
+        <>
+          <ToastContainer />
+          <CartProvider>{children}</CartProvider>
+        </>
       </body>
     </html>
   );

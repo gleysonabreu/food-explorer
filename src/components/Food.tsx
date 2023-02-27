@@ -1,4 +1,5 @@
 "use client";
+import { useCart } from "@/hooks/useCart";
 import Link from "next/link";
 import { useState } from "react";
 import { Button } from "./Button";
@@ -27,6 +28,8 @@ export function Food({
 }: FoodProps) {
   const [quantity, setQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(price);
+
+  const { addToCart } = useCart();
 
   function handleAddQuantity() {
     if (quantity >= amount) return;
@@ -66,7 +69,7 @@ export function Food({
           handleAddQuantity={handleAddQuantity}
           handleRemoveQuantity={handleRemoveQuantity}
         />
-        <Button>Add</Button>
+        <Button onClick={() => addToCart({ quantity, foodId: id })}>Add</Button>
       </div>
     </div>
   );
