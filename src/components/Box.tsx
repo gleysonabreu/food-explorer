@@ -1,6 +1,6 @@
 "use client";
 import { Food, FoodProps } from "./Food";
-import { SliderBox } from "./SliderBox";
+import { SliderBox } from "./SliderComponents";
 
 type BoxProps = {
   title: string;
