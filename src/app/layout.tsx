@@ -27,7 +27,7 @@ export default function RootLayout({
     <html lang="en">
       <head />
       <body
-        className={`${roboto.variable} ${poppins.variable} bg-food-dark-400`}
+        className={`${roboto.variable} ${poppins.variable} font-sans bg-food-dark-400`}
       >
         <>
           <ToastContainer />

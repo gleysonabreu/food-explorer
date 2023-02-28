@@ -6,6 +6,7 @@ module.exports = {
       fontFamily: {
         poppins: "var(--font-poppins)",
         roboto: "var(--font-roboto)",
+        sans: ['var(--font-roboto)', 'sans-serif']
       },
       backgroundImage: {
         "gradient-food-200": "linear-gradient(180deg, #091E26 0%, #00131C 100%)",
