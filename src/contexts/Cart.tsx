@@ -50,8 +50,10 @@ export function CartProvider({ children }: CartProviderProps) {
   async function addToCart({ foodId, quantity }: AddToCartProps) {
     const settingsLoadingToast = {
       isLoading: false,
-      autoClose: 2000,
       closeButton: true,
+      autoClose: 5000,
+      closeOnClick: true,
+      pauseOnHouver: false,
     };
     const toastId = toast.loading("Adding to cart...");
 
@@ -122,8 +124,10 @@ export function CartProvider({ children }: CartProviderProps) {
   async function updateCartItems({ foodId, quantity }: UpdateCartItemProps) {
     const settingsLoadingToast = {
       isLoading: false,
-      autoClose: 2000,
       closeButton: true,
+      autoClose: 5000,
+      closeOnClick: true,
+      pauseOnHouver: false,
     };
     const toastId = toast.loading("Updating quantity...");
 
