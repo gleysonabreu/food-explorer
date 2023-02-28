@@ -6,12 +6,17 @@ import { toast } from "react-toastify";
 type CartContextValue = {
   amountItemCount: number;
   addToCart: (food: AddToCartProps) => void;
+  removeFoodFromCart: (food: RemoveItemFromCartProps) => void;
   cartItems: CartItem[];
 };
 
 type AddToCartProps = {
   foodId: string;
   quantity: number;
+};
+
+type RemoveItemFromCartProps = {
+  foodId: string;
 };
 
 type CartItem = {
@@ -70,10 +75,27 @@ export function CartProvider({ children }: CartProviderProps) {
     }
   }
 
+  function removeFoodFromCart({ foodId }: RemoveItemFromCartProps) {
+    try {
+      const findItemCart = cartItems.find((cart) => cart.id === foodId);
+      if (!findItemCart) {
+        throw Error();
+      }
+
+      const newCartList = cartItems.filter((cart) => cart.id !== foodId);
+      localStorage.setItem(env.cartKey, JSON.stringify(newCartList));
+      setCartItems(newCartList);
+      toast.success("Food removed from cart!");
+    } catch (error) {
+      toast.error("Error removing food from cart!");
+    }
+  }
+
   const values: CartContextValue = {
     addToCart,
     amountItemCount,
     cartItems,
+    removeFoodFromCart,
   };
 
   return <CartContext.Provider value={values}>{children}</CartContext.Provider>;
