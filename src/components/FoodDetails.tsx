@@ -1,6 +1,9 @@
 "use client";
+import { Role } from "@/contexts/Auth";
+import { useAuth } from "@/hooks/useAuth";
 import { useCart } from "@/hooks/useCart";
 import { formatPrice } from "@/utils/formatPrice";
+import Link from "next/link";
 import { useState } from "react";
 import { FoodProps } from "./Food";
 import { FoodImage } from "./FoodImage";
@@ -16,6 +19,7 @@ export function FoodDetails({ food }: FoodDetailsProps) {
   const [quantity, setQuantity] = useState(1);
 
   const { addToCart } = useCart();
+  const { user } = useAuth();
 
   function handleAddQuantity() {
     if (quantity >= food.amount) return;
@@ -45,14 +49,23 @@ export function FoodDetails({ food }: FoodDetailsProps) {
           <Tag name="alface" />
         </div>
         <div className="flex items-center gap-4">
-          <Stepper
-            quantity={quantity}
-            handleAddQuantity={handleAddQuantity}
-            handleRemoveQuantity={handleRemoveQuantity}
-          />
-          <Button onClick={() => addToCart({ foodId: food.id, quantity })}>
-            Add (R$ {formatPrice(food.price)})
-          </Button>
+          {user.role === Role.User && (
+            <Stepper
+              quantity={quantity}
+              handleAddQuantity={handleAddQuantity}
+              handleRemoveQuantity={handleRemoveQuantity}
+            />
+          )}
+
+          {user.role === Role.User ? (
+            <Button onClick={() => addToCart({ foodId: food.id, quantity })}>
+              Add (R$ {formatPrice(food.price)})
+            </Button>
+          ) : (
+            <Button asChild>
+              <Link href={`/admin/food/${food.id}/edit`}>Edit plate</Link>
+            </Button>
+          )}
         </div>
       </div>
     </div>
