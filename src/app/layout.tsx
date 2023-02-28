@@ -1,4 +1,5 @@
 "use client";
+import { AuthProvider } from "@/contexts/Auth";
 import { CartProvider } from "@/contexts/Cart";
 import { Poppins, Roboto } from "@next/font/google";
 import { ToastContainer } from "react-toastify";
@@ -29,10 +30,10 @@ export default function RootLayout({
       <body
         className={`${roboto.variable} ${poppins.variable} font-sans bg-food-dark-400`}
       >
-        <>
-          <ToastContainer />
+        <ToastContainer />
+        <AuthProvider>
           <CartProvider>{children}</CartProvider>
-        </>
+        </AuthProvider>
       </body>
     </html>
   );
