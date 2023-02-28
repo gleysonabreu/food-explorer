@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 type CartContextValue = {
   amountItemCount: number;
-  addToCart: (food: AddToCartProps) => void;
+  addToCart: (food: AddToCartProps) => Promise<void>;
   removeFoodFromCart: (food: RemoveItemFromCartProps) => void;
   updateCartItems: (food: UpdateCartItemProps) => Promise<void>;
   cartItems: CartItem[];
@@ -48,6 +48,14 @@ export function CartProvider({ children }: CartProviderProps) {
   const amountItemCount = cartItems.reduce((acc, item) => acc + item.amount, 0);
 
   async function addToCart({ foodId, quantity }: AddToCartProps) {
+    const settingsLoadingToast = {
+      isLoading: false,
+      autoClose: 2000,
+      closeButton: true,
+    };
+    const toastId = toast.loading("Adding to cart...");
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     try {
       const res = await fetch(`${env.apiURL}/foods/${foodId}`);
       const resBody = (await res.json()) as CartItem;
@@ -59,7 +67,11 @@ export function CartProvider({ children }: CartProviderProps) {
           : quantity;
 
         if (newQuantity > resBody.amount) {
-          toast.error("Quantity not available!");
+          toast.update(toastId, {
+            render: "Quantity not available!",
+            type: "error",
+            ...settingsLoadingToast,
+          });
           return;
         }
 
@@ -71,12 +83,24 @@ export function CartProvider({ children }: CartProviderProps) {
 
         setCartItems(newCartList);
         localStorage.setItem(env.cartKey, JSON.stringify(newCartList));
-        toast.success("Food added to cart!");
+        toast.update(toastId, {
+          render: "Food added to cart!",
+          type: "success",
+          ...settingsLoadingToast,
+        });
       } else {
-        toast.error("Unexpected response from the server, try again!");
+        toast.update(toastId, {
+          render: "Unexpected response from the server, try again!",
+          type: "error",
+          ...settingsLoadingToast,
+        });
       }
     } catch (error) {
-      toast.error("Unable to connect to Food Explorer!");
+      toast.update(toastId, {
+        render: "Unable to connect to Food Explorer!",
+        type: "error",
+        ...settingsLoadingToast,
+      });
     }
   }
 
