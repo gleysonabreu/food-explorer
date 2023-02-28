@@ -1,5 +1,6 @@
 "use client";
 import { useCart } from "@/hooks/useCart";
+import { formatPrice } from "@/utils/formatPrice";
 import Link from "next/link";
 import { useState } from "react";
 import { Button } from "./Button";
@@ -27,20 +28,17 @@ export function Food({
   urlFood,
 }: FoodProps) {
   const [quantity, setQuantity] = useState(1);
-  const [totalPrice, setTotalPrice] = useState(price);
 
   const { addToCart } = useCart();
 
   function handleAddQuantity() {
     if (quantity >= amount) return;
     setQuantity(quantity + 1);
-    setTotalPrice(price * (quantity + 1));
   }
 
   function handleRemoveQuantity() {
     if (quantity <= 1) return;
     setQuantity(quantity - 1);
-    setTotalPrice(price * (quantity - 1));
   }
 
   return (
@@ -60,7 +58,7 @@ export function Food({
         {foodDescription}
       </p>
       <h2 className="font-normal text-3xl text-center text-food-tints-cake-200">
-        R$ {totalPrice.toFixed(2).toString().replace(".", ",")}
+        {formatPrice(price)}
       </h2>
 
       <div className="flex items-center gap-4">

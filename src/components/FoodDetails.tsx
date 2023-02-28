@@ -1,5 +1,6 @@
 "use client";
 import { useCart } from "@/hooks/useCart";
+import { formatPrice } from "@/utils/formatPrice";
 import { useState } from "react";
 import { Button } from "./Button";
 import { FoodProps } from "./Food";
@@ -13,20 +14,17 @@ type FoodDetailsProps = {
 
 export function FoodDetails({ food }: FoodDetailsProps) {
   const [quantity, setQuantity] = useState(1);
-  const [totalPrice, setTotalPrice] = useState(food.price);
 
   const { addToCart } = useCart();
 
   function handleAddQuantity() {
     if (quantity >= food.amount) return;
     setQuantity(quantity + 1);
-    setTotalPrice(food.price * (quantity + 1));
   }
 
   function handleRemoveQuantity() {
     if (quantity <= 1) return;
     setQuantity(quantity - 1);
-    setTotalPrice(food.price * (quantity - 1));
   }
 
   return (
@@ -53,7 +51,7 @@ export function FoodDetails({ food }: FoodDetailsProps) {
             handleRemoveQuantity={handleRemoveQuantity}
           />
           <Button onClick={() => addToCart({ foodId: food.id, quantity })}>
-            Add (R$ {totalPrice.toFixed(2).toString().replace(".", ",")})
+            Add (R$ {formatPrice(food.price)})
           </Button>
         </div>
       </div>
