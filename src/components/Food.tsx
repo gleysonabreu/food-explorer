@@ -4,8 +4,8 @@ import { formatPrice } from "@/utils/formatPrice";
 import Link from "next/link";
 import { Heart } from "phosphor-react";
 import { useState } from "react";
-import { Button } from "./Button";
 import { FoodImage } from "./FoodImage";
+import { Button } from "./Form";
 import { Stepper } from "./Stepper";
 
 export type FoodProps = {

@@ -2,9 +2,9 @@
 import { useCart } from "@/hooks/useCart";
 import { formatPrice } from "@/utils/formatPrice";
 import { useState } from "react";
-import { Button } from "./Button";
 import { FoodProps } from "./Food";
 import { FoodImage } from "./FoodImage";
+import { Button } from "./Form";
 import { Stepper } from "./Stepper";
 import { Tag } from "./Tag";
 

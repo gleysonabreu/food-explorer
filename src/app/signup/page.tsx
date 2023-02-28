@@ -1,5 +1,4 @@
-import { Button } from "@/components/Button";
-import { Input } from "@/components/Input";
+import { Button, Input } from "@/components/Form";
 import Image from "next/image";
 import Link from "next/link";
 import logoSVG from "../../../public/logo.svg";

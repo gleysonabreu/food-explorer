@@ -1,8 +1,7 @@
 "use client";
-import { Button } from "@/components/Button";
 import { Dialog } from "@/components/Dialog";
+import { Button, Input } from "@/components/Form";
 import { HeaderPagesBack } from "@/components/HeaderPagesBack";
-import { Input } from "@/components/Input";
 import { ScrollArea } from "@/components/ScrollArea";
 import * as DialogContent from "@radix-ui/react-dialog";
 import { Plus, UploadSimple, X } from "phosphor-react";

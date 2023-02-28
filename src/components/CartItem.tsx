@@ -1,8 +1,8 @@
 import { useCart } from "@/hooks/useCart";
 import Link from "next/link";
 import { useState } from "react";
-import { Button } from "./Button";
 import { FoodImage } from "./FoodImage";
+import { Button } from "./Form";
 import { Stepper } from "./Stepper";
 
 type CartItem = {

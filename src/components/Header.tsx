@@ -1,10 +1,9 @@
 "use client";
-import { Button } from "@/components/Button";
-import { Input } from "@/components/Input";
 import Image from "next/image";
 import { Receipt, SignOut } from "phosphor-react";
 import logoSVG from "../../public/logo.svg";
 import { CartDialog } from "./CartDialog";
+import { Button, Input } from "./Form";
 
 export function Header() {
   return (

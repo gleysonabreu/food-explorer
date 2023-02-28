@@ -3,9 +3,9 @@ import { useCart } from "@/hooks/useCart";
 import { formatPrice } from "@/utils/formatPrice";
 import * as DialogContent from "@radix-ui/react-dialog";
 import { ShoppingCart } from "phosphor-react";
-import { Button } from "./Button";
 import { CartItem } from "./CartItem";
 import { Dialog } from "./Dialog";
+import { Button } from "./Form";
 import { ScrollArea } from "./ScrollArea";
 
 export function CartDialog() {
