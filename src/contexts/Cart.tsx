@@ -7,10 +7,15 @@ type CartContextValue = {
   amountItemCount: number;
   addToCart: (food: AddToCartProps) => void;
   removeFoodFromCart: (food: RemoveItemFromCartProps) => void;
+  updateCartItems: (food: UpdateCartItemProps) => Promise<void>;
   cartItems: CartItem[];
 };
 
 type AddToCartProps = {
+  foodId: string;
+  quantity: number;
+};
+type UpdateCartItemProps = {
   foodId: string;
   quantity: number;
 };
@@ -91,11 +96,69 @@ export function CartProvider({ children }: CartProviderProps) {
     }
   }
 
+  async function updateCartItems({ foodId, quantity }: UpdateCartItemProps) {
+    const settingsLoadingToast = {
+      isLoading: false,
+      autoClose: 2000,
+      closeButton: true,
+    };
+    const toastId = toast.loading("Updating quantity...");
+
+    try {
+      if (quantity <= 0) {
+        removeFoodFromCart({ foodId });
+        toast.done(toastId);
+        return;
+      }
+
+      const res = await fetch(`${env.apiURL}/foods/${foodId}`);
+      const resBody = (await res.json()) as CartItem;
+
+      if (res.status === 200) {
+        const updateCart = [...cartItems];
+        const existingCartItem = updateCart.find((cart) => cart.id === foodId);
+
+        if (quantity > resBody.amount) {
+          toast.update(toastId, {
+            render: "Quantity not available!",
+            type: "error",
+            ...settingsLoadingToast,
+          });
+          return;
+        }
+
+        if (existingCartItem) {
+          existingCartItem.amount = quantity;
+          setCartItems(updateCart);
+          localStorage.setItem(env.cartKey, JSON.stringify(updateCart));
+          toast.update(toastId, {
+            render: "Quantity updated!",
+            type: "success",
+            ...settingsLoadingToast,
+          });
+        }
+      } else {
+        toast.update(toastId, {
+          render: "Unexpected response from the server, try again!",
+          type: "error",
+          ...settingsLoadingToast,
+        });
+      }
+    } catch (error) {
+      toast.update(toastId, {
+        render: "Unable to connect to Food Explorer!",
+        type: "error",
+        ...settingsLoadingToast,
+      });
+    }
+  }
+
   const values: CartContextValue = {
     addToCart,
     amountItemCount,
     cartItems,
     removeFoodFromCart,
+    updateCartItems,
   };
 
   return <CartContext.Provider value={values}>{children}</CartContext.Provider>;
