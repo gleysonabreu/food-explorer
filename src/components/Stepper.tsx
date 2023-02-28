@@ -1,5 +1,4 @@
-import { Minus } from "./Icons/Minus";
-import { Plus } from "./Icons/Plus";
+import { Minus, Plus } from "phosphor-react";
 
 type StepperProps = {
   quantity: number;
@@ -16,12 +15,12 @@ export function Stepper({
     <div className="flex items-center gap-4">
       <button
         onClick={handleRemoveQuantity}
-        className="w-6 h-6 flex items-center justify-center"
+        className="w-6 h-6 flex items-center justify-center text-food-light-300"
       >
-        <Minus />
+        <Minus size={20} />
       </button>
       <input
-        className="bg-transparent w-10 outline-none text-center text-food-light-300 font-bold text-xl"
+        className="bg-transparent max-w-[2.5rem] outline-none text-center text-food-light-300 font-bold text-lg"
         type="number"
         id="food-amount"
         readOnly
@@ -29,9 +28,9 @@ export function Stepper({
       />
       <button
         onClick={handleAddQuantity}
-        className="w-6 h-6 flex items-center justify-center"
+        className="w-6 h-6 flex items-center justify-center text-food-light-300"
       >
-        <Plus />
+        <Plus size={20} />
       </button>
     </div>
   );

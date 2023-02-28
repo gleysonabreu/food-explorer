@@ -2,10 +2,10 @@
 import { useCart } from "@/hooks/useCart";
 import { formatPrice } from "@/utils/formatPrice";
 import Link from "next/link";
+import { Heart } from "phosphor-react";
 import { useState } from "react";
 import { Button } from "./Button";
 import { FoodImage } from "./FoodImage";
-import { Heart } from "./Icons/Heart";
 import { Stepper } from "./Stepper";
 
 export type FoodProps = {
@@ -43,8 +43,8 @@ export function Food({
 
   return (
     <div className="flex relative flex-col items-center p-6 gap-4 isolate w-[305px] h-[462px] bg-food-dark-300 border border-food-dark-300 rounded-lg">
-      <button className="absolute top-0 right-0">
-        <Heart />
+      <button className="absolute top-0 right-0 text-food-light-300">
+        <Heart size={25} />
       </button>
       <FoodImage foodName={foodName} url={foodImage} variant="sm" />
 

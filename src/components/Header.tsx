@@ -1,9 +1,8 @@
 "use client";
 import { Button } from "@/components/Button";
-import { Receipt } from "@/components/Icons/Receipt";
-import { SignOut } from "@/components/Icons/SignOut";
 import { Input } from "@/components/Input";
 import Image from "next/image";
+import { Receipt, SignOut } from "phosphor-react";
 import logoSVG from "../../public/logo.svg";
 import { CartDialog } from "./CartDialog";
 
@@ -22,14 +21,14 @@ export function Header() {
       </div>
 
       <Button>
-        <Receipt />
+        <Receipt size={25} />
         <span>Orders (0)</span>
       </Button>
 
       <CartDialog />
 
-      <button>
-        <SignOut />
+      <button className="text-food-light-300">
+        <SignOut size={25} />
       </button>
     </header>
   );

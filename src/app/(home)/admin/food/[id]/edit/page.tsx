@@ -1,19 +1,14 @@
 "use client";
 import { Button } from "@/components/Button";
-import { Close } from "@/components/Close";
 import { Dialog } from "@/components/Dialog";
-import { CaretLeft } from "@/components/Icons/CaretLeft";
-import { UploadSimple } from "@/components/Icons/UploadSimple";
+import { HeaderPagesBack } from "@/components/HeaderPagesBack";
 import { Input } from "@/components/Input";
-import { Plus } from "@/components/Plus";
 import { ScrollArea } from "@/components/ScrollArea";
 import * as DialogContent from "@radix-ui/react-dialog";
-import { useRouter } from "next/navigation";
+import { Plus, UploadSimple, X } from "phosphor-react";
 import { useState } from "react";
 
 export default function EditFood() {
-  const { back } = useRouter();
-
   const [ingredients, setIngredients] = useState<string[]>([]);
   const [ingredient, setIngredient] = useState<string>("");
 
@@ -32,14 +27,7 @@ export default function EditFood() {
   }
   return (
     <div className="px-32 py-3 flex flex-1 flex-col gap-6 justify-center">
-      <header>
-        <button onClick={() => back()} className="flex items-center gap-3">
-          <CaretLeft />
-          <span className="font-poppins font-bold text-xl text-food-light-300">
-            Back
-          </span>
-        </button>
-      </header>
+      <HeaderPagesBack />
 
       <div className="w-full h-full flex text-food-light-300 flex-col gap-12 pb-3">
         <h1 className="font-poppins font-medium text-3xl">Edit Food</h1>
@@ -58,7 +46,7 @@ export default function EditFood() {
                   htmlFor="upload-image"
                   className="flex flex-row gap-2 cursor-pointer"
                 >
-                  <UploadSimple />
+                  <UploadSimple size={25} />
                   Select Image
                 </label>
               </div>
@@ -100,7 +88,7 @@ export default function EditFood() {
                           className="outline-none"
                           onClick={() => handleRemoveIngredient(index)}
                         >
-                          <Close />
+                          <X size={20} />
                         </button>
                       </div>
                     ))}
@@ -108,7 +96,7 @@ export default function EditFood() {
                     <DialogContent.Root>
                       <DialogContent.Trigger className="border-food-light-600 outline-none border-dashed border text-food-light-100 py-2 px-4 rounded-lg flex items-center gap-2">
                         Add
-                        <Plus />
+                        <Plus size={20} />
                       </DialogContent.Trigger>
 
                       <Dialog title="Add ingredient">
