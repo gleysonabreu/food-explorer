@@ -54,7 +54,6 @@ export function CartProvider({ children }: CartProviderProps) {
       closeButton: true,
     };
     const toastId = toast.loading("Adding to cart...");
-    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     try {
       const res = await fetch(`${env.apiURL}/foods/${foodId}`);
